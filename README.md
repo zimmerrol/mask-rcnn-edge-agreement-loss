@@ -1,18 +1,14 @@
 # Faster Training of Mask R-CNN by Focusing on Instance Boundaries
 
-![Instance Mask Visualizations](instance_mask_visualizations.jpg)
+![Instance Mask Visualizations](https://github.com/FlashTek/mask-rcnn-edge-agreement-loss/raw/master/instance_mask_visualizations.jpg)
 
 This is an implementation of the improved training scheme [Faster Training of Mask R-CNN by Focusing on Instance Boundaries](https://arxiv.org/abs/1809.07069) on Python 3, Keras, and TensorFlow. The code is an extension of the existing implementation of [Mask R-CNN by Matterport](https://github.com/matterport/Mask_RCNN). It can be seen as a fork of the original repository based on [commit cbff80f](https://github.com/matterport/Mask_RCNN/commit/cbff80f3e3f653a9eeee43d0d383a0385aba546b). The model generates bounding boxes and segmentation masks for each instance of an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone. The training speed has been increased by introducing an auxiliary objective.
 
+Adding the new auxillary task can be done using this simple network head:
+<img src="https://github.com/FlashTek/mask-rcnn-edge-agreement-loss/raw/master/edge_agreement_head_small.png" alt="Architecture" height="250">
 
-![Instance Mask Visualizations](edge_agreement_head_small.png)
-
-
-![Instance Mask Visualizations](mask_loss.jpg)
-
-
-
-
+The choice of the edge detection filter influences the convergence speed up; as written in the paper, the best results were obtained using the `Sobel` filter.
+<img src="https://github.com/FlashTek/mask-rcnn-edge-agreement-loss/raw/master/mask_loss.jpg" alt="Loss curves" height="350">
 
 If you like this work and want to use this in your work or research, please cite:
 
